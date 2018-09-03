@@ -27,6 +27,11 @@ public class Oblig1 {
         array[b] = temp;
     }
 
+    // Questions:
+    // The largest amount of swaps occurs when the largest number is in the first spot.
+    // The lowest amount of swaps happens when the list is sorted in ascending order.
+    // The largest amount of swaps is n-1, the lowest is 0. The average is (n-1)/2.
+
     // Counts the amount of swaps the "maks"-method would have to do:
     public static int ombyttinger(int[] list) {
         int swapCount = 0;
