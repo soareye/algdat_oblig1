@@ -26,4 +26,17 @@ public class Oblig1 {
         array[a] = array[b];
         array[b] = temp;
     }
+
+    // Counts the amount of swaps the "maks"-method would have to do:
+    public static int ombyttinger(int[] list) {
+        int swapCount = 0;
+
+        for (int i = 0; i < list.length-1; i++) {
+            if (list[i] > list[i+1]) {
+                swapCount++;
+            }
+        }
+
+        return swapCount;
+    }
 }

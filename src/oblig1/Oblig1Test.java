@@ -40,4 +40,13 @@ class Oblig1Test {
 
         assertArrayEquals(expectedList, list);
     }
+
+    @org.junit.jupiter.api.Test
+    void ombyttinger() {
+        int[] list = {5, 4, 3, 2, 1};
+        int expectedSwapCount = 4;
+        int swapCount = Oblig1.ombyttinger(list);
+
+        assertEquals(expectedSwapCount, swapCount);
+    }
 }
