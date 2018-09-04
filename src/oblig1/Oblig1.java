@@ -27,7 +27,7 @@ public class Oblig1 {
         array[b] = temp;
     }
 
-    // Questions:
+    // Task 1 questions:
     // The largest amount of swaps occurs when the largest number is in the first spot.
     // The lowest amount of swaps happens when the list is sorted in ascending order.
     // The largest amount of swaps is n-1, the lowest is 0. The average is (n-1)/2.
@@ -43,5 +43,41 @@ public class Oblig1 {
         }
 
         return swapCount;
+    }
+
+
+    // Finds the number of unique values in a sorted list.
+    public static int antallUlikeSortert(int[] list) {
+        if (!sortedAsc(list)) {
+            throw new IllegalStateException("Unsorted list!");
+        }
+
+        int uniqueCount = 0;
+
+        if (list.length == 0) {
+            return uniqueCount;
+        }
+
+        uniqueCount++;
+
+        for (int i = 1; i < list.length; i++) {
+            if (list[i] > list[i-1]) {
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static boolean sortedAsc(int[] list) {
+        boolean sorted = true;
+
+        for (int i = 1; i < list.length; i++) {
+            if (list[i] < list[i - 1]) {
+                sorted = false;
+            }
+        }
+
+        return sorted;
     }
 }

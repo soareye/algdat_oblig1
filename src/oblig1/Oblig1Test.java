@@ -49,4 +49,39 @@ class Oblig1Test {
 
         assertEquals(expectedSwapCount, swapCount);
     }
+
+    @org.junit.jupiter.api.Test
+    void antallUlikeSortert() {
+        int[] list = {1, 2, 3};
+        int expectedUniqueCount = 3;
+        int uniqueCount = Oblig1.antallUlikeSortert(list);
+
+        assertEquals(expectedUniqueCount, uniqueCount);
+    }
+
+    @org.junit.jupiter.api.Test
+    void antallUlikeSortertEmptyList() {
+        int[] emptyList = new int[0];
+        int expectedUniqueCount = 0;
+        int uniqueCount = Oblig1.antallUlikeSortert(emptyList);
+
+        assertEquals(expectedUniqueCount, uniqueCount);
+    }
+
+    @org.junit.jupiter.api.Test
+    void antallUlikeSortertUnsorted() {
+        int[] unsortedList = {1, 3, 2};
+
+        assertThrows(IllegalStateException.class,
+                ()->Oblig1.antallUlikeSortert(unsortedList));
+    }
+
+    @org.junit.jupiter.api.Test
+    void sortedAsc() {
+        int[] sortedList = {1, 2, 3};
+        int[] unsortedList = {1, 3, 2};
+
+        assertTrue(Oblig1.sortedAsc(sortedList));
+        assertFalse(Oblig1.sortedAsc(unsortedList));
+    }
 }
