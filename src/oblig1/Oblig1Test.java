@@ -69,11 +69,11 @@ class Oblig1Test {
     }
 
     @org.junit.jupiter.api.Test
-    void antallUlikeSortertUnsorted() {
+    void handleUnsorted() {
         int[] unsortedList = {1, 3, 2};
 
         assertThrows(IllegalStateException.class,
-                ()->Oblig1.antallUlikeSortert(unsortedList));
+                ()->Oblig1.handleUnsorted(unsortedList));
     }
 
     @org.junit.jupiter.api.Test
@@ -83,5 +83,80 @@ class Oblig1Test {
 
         assertTrue(Oblig1.sortedAsc(sortedList));
         assertFalse(Oblig1.sortedAsc(unsortedList));
+    }
+
+    @org.junit.jupiter.api.Test
+     void antallUlikeUsortert() {
+        int[] list = {1, 2, 3, 3, 1, 6, 6};
+        int expectedUniqueCount = 4;
+        int uniqueCount = Oblig1.antallUlikeUsortert(list);
+
+        assertEquals(expectedUniqueCount, uniqueCount);
+    }
+
+    @org.junit.jupiter.api.Test
+    void delsortering() {
+        int[] list = {10, 8, 6, 4, 1, 9, 7, 5, 3, 2};
+        int[] expectedResult = {1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
+
+        Oblig1.delsortering(list);
+
+        assertArrayEquals(expectedResult, list);
+    }
+
+    @org.junit.jupiter.api.Test
+    void delsorteringEven() {
+        int[] evenList = {22, 14, 10, 6, 4, 2};
+        int[] expectedResult = {2, 4, 6, 10, 14, 22};
+
+        Oblig1.delsortering(evenList);
+
+        assertArrayEquals(expectedResult, evenList);
+    }
+
+    @org.junit.jupiter.api.Test
+    void delsorteringOdd() {
+        int[] oddList = {9, 7, 5, 3, 1};
+        int[] expectedResult = {1, 3, 5, 7, 9};
+
+        Oblig1.delsortering(oddList);
+
+        assertArrayEquals(expectedResult, oddList);
+    }
+
+    @org.junit.jupiter.api.Test
+    void delsorteringEmptyList() {
+        int[] emptyList = new int[0];
+        int[] expectedResult = {};
+
+        Oblig1.delsortering(emptyList);
+
+        assertArrayEquals(expectedResult, emptyList);
+    }
+
+    @org.junit.jupiter.api.Test
+    void moveMinOdd() {
+        int[] oddList = {5, 4, 3, 2, 1};
+        int[] expectedResult = {1, 5, 4, 3, 2};
+
+        Oblig1.moveMinOdd(oddList, oddList.length-1, 0);
+
+        assertArrayEquals(expectedResult, oddList);
+    }
+
+    @org.junit.jupiter.api.Test
+    void moveMaxEven() {
+        int[] evenList = {5, 4, 3, 2, 1};
+        int[] expectedResult = {5, 3, 2, 1, 4};
+
+        Oblig1.moveMaxEven(evenList, 0, evenList.length);
+
+        assertArrayEquals(expectedResult, evenList);
+    }
+
+    @org.junit.jupiter.api.Test
+    void even() {
+        assertTrue(Oblig1.even(2));
+        assertFalse(Oblig1.even(1));
     }
 }
